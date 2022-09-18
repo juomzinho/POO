@@ -46,10 +46,10 @@ public class HeartRates {
 	}
 	
 	public double getAlvoMin() {
-		return (220 - idade) * 1.5;
+		return (220 - idade) * 0.5;
 	}
 	
 	public double getAlvoMax() {
-		return (220 - idade) * 1.85;
+		return (220 - idade) * 0.85;
 	}
 }

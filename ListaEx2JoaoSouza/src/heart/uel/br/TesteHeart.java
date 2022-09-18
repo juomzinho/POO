@@ -32,7 +32,7 @@ public class TesteHeart {
 		System.out.println("=========== Heart Rates ===============");	
 		System.out.println(hr.getNome() + " " + hr.getSobrenome() + " - " + hr.getIdade() +" anos");
 		System.out.println("Frequencia cardiaca maxima: " + hr.getFrequenciaMaxima());
-		System.out.println("Frequencia cardiaca alvo: " + hr.getAlvoMin() + " ~ " + hr.getAlvoMax());
+		System.out.printf("Frequencia cardiaca alvo: %.2f ~ %.2f", hr.getAlvoMin(), hr.getAlvoMax());
 		
 		input.close();
 	}
