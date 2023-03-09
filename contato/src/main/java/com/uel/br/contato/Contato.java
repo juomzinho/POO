@@ -7,11 +7,12 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
 
 @Entity
-public class Contato {
+public class Contato implements Serializable {
 
     @Override
     public boolean equals(Object o){
