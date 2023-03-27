@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>App Adminstração</title>
+</head>
+<body style="display: flex; flex-direction: column; align-items: center; justify-content: center">
+  <h1>Cadastrar restaurante</h1>
+  <form action="#" th:action="@{/adicionar-restaurante}" th:object="${restaurante}" method="post">
+    <label for="nome">Nome: </label>
+    <input type="text" th:field="*{nome}" id="nome">
+    <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+    <br/>
+    <input type="submit" value="Adicionar">
+</form>
+  <div >
+      <button>
+          <a href="/index">
+              Voltar ao inicio
+          </a>
+      </button>
+  </div>
+</body>
+</html>

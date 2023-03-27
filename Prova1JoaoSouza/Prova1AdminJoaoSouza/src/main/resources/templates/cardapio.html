@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>App Adminstração</title>
+</head>
+<body style="display: flex; flex-direction: column; align-items: center; justify-content: center">
+  <h1>Cardapio</h1>
+  <div th:switch="${itens}">
+      <h2 th:case="null">Não existem restaurantes</h2>
+      <div th:case="*">
+          <table>
+              <thead>
+              <tr>
+                  <th>Nome</th>
+                  <th>Descrição</th>
+                  <th>Preço</th>
+                  <th>Editar</th>
+                  <th>Remover</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr th:each="item : ${itens}">
+                  <td th:text="${item.nome}"></td>
+                  <td th:text="${item.descricao}"></td>
+                  <td th:text="${item.preco}"></td>
+                  <td><a th:href="@{/editar-item/{id}(id=${item.id})}">Alterar</a></td>
+                  <td><a th:href="@{/excluir-item/{id}(id=${item.id})}">Excluir</a> </td>
+              </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+  <div >
+      <button>
+          <a href="@{/editar-item/{id}(id=${item.id})}">
+              Adicionar item
+          </a>
+      </button>
+      <button>
+        <a href="/index">
+            Restaurantes
+        </a>
+    </button>
+  </div>
+</body>
+</html>
