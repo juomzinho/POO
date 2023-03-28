@@ -14,4 +14,7 @@ public interface ItemCardapioRepository extends JpaRepository<ItemCardapio, Inte
 
     @Query("select preco from ItemCardapio i where i.id = :id")
     double precoById(@Param("id") int id);
+
+    @Query("select nome from ItemCardapio i where i.id = :id")
+    String nomeById(@Param("id") int id);
 }

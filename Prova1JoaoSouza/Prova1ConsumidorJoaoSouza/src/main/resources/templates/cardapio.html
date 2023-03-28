@@ -10,13 +10,13 @@
   <div th:switch="${itens}">
       <h2 th:case="null">Não existem pedidos</h2>
       <div th:case="*">
-          <table>
+          <table class="table">
               <thead>
               <tr>
-                  <th>Nome</th>
-                  <th>Descrição</th>
-                  <th>Preço</th>
-                  <th>Pedir</th>
+                  <th scope="col">Nome</th>
+                  <th scope="col">Descrição</th>
+                  <th scope="col">Preço</th>
+                  <th scope="col">Pedir</th>
               </tr>
               </thead>
               <tbody>

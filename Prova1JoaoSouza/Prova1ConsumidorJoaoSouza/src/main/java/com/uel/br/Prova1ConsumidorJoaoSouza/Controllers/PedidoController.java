@@ -106,22 +106,26 @@ public class PedidoController {
     @GetMapping("/pedidos")
     public String exibirPedidos(Model model, HttpServletRequest request){
         List<Pedido> pedidos = (List<Pedido>) request.getSession().getAttribute(SESSION_PEDIDOS);
-
+        List<Pedido> newPedidos = new ArrayList<>();
         double precoTotal = 0;
 
         if(!CollectionUtils.isEmpty(pedidos)){
             for(Pedido pedido: pedidos){
+                System.out.println(pedido.getNome() + " " + itemCardapioRepository.existsById(pedido.getId()));
                 if(!itemCardapioRepository.existsById(pedido.getId())){
-                    pedidos.remove(pedido);
+                    // pedidos.remove(pedido);
                 }else{
+                    pedido.setNome(itemCardapioRepository.nomeById(pedido.getId()));
                     pedido.setPreco(itemCardapioRepository.precoById(pedido.getId()));
                     precoTotal = precoTotal + (pedido.getPreco() * pedido.getQuantidade());
+                    newPedidos.add(pedido);
                 }
             }
         };
-
+        
+        request.getSession().setAttribute(SESSION_PEDIDOS, newPedidos);
         model.addAttribute("precoTotal", precoTotal);
-        model.addAttribute("sessionPedidos", !CollectionUtils.isEmpty(pedidos) ? pedidos : new ArrayList<>());
+        model.addAttribute("sessionPedidos", !CollectionUtils.isEmpty(newPedidos) ? newPedidos : new ArrayList<>());
 
         return "pedidos";
     }

@@ -11,7 +11,7 @@
         <table class="table">
             <thead>
             <tr>
-                <!-- <th scope="col">Nome Restaurante</th> -->
+                <th scope="col">Nome Restaurante</th>
                 <th scope="col">Pedido</th>
                 <th scope="col">Quantidade</th>
                 <th scope="col">Preço</th>
@@ -21,7 +21,7 @@
             </thead>
             <tbody>
             <tr th:each="pedido : ${sessionPedidos}">
-                <!-- <td th:text="${pedido.nome_restaurante}"></td> -->
+                <td th:text="${pedido.nomeRestaurante}"></td>
                 <td th:text="${pedido.nome}"></td>
                 <td th:text="${pedido.quantidade}"></td>
                 <td th:text="${pedido.preco}"></td>
