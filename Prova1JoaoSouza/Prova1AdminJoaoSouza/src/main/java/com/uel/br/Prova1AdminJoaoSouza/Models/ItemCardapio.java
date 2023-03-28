@@ -14,7 +14,7 @@ import jakarta.validation.constraints.NotNull;
 @Table(name="item_cardapio")
 public class ItemCardapio {
     @ManyToOne
-    @JoinColumn(name = "id_restaurante", nullable = false)
+    @JoinColumn(name = "id_restaurante", insertable = false, updatable = false)
     private Restaurante restaurante;
 
     @Id
@@ -25,6 +25,9 @@ public class ItemCardapio {
     private String nome;
 
     private String descricao;
+
+    @NotNull
+    private int id_restaurante;
 
     @NotNull(message = "O preço é obrigatório")
     private double preco;
@@ -38,6 +41,7 @@ public class ItemCardapio {
     public String getNome() {
         return nome;
     }
+    
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -45,6 +49,7 @@ public class ItemCardapio {
     public String getDescricao() {
         return descricao;
     }
+
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
@@ -52,12 +57,24 @@ public class ItemCardapio {
     public double getPreco() {
         return preco;
     }
+
     public void setPreco(double preco) {
         this.preco = preco;
     }    
 
-
     public void setRestaurante(Restaurante restaurante){
         this.restaurante = restaurante;
+    }
+
+    public Restaurante getRestaurante(){
+        return restaurante;
+    }
+
+    public void setIdRestaurante(int id_restaurante){
+        this.id_restaurante = id_restaurante;
+    }
+
+    public int getIdRestaurante(){
+        return id_restaurante;
     }
 }

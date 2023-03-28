@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
@@ -14,7 +15,8 @@ import jakarta.validation.constraints.NotBlank;
 @Table(name="restaurante")
 public class Restaurante {
 
-    @OneToMany(mappedBy = "restaurante")
+    @OneToMany
+    @JoinColumn(name = "id_restaurante")
     private List<ItemCardapio> itensCardapio;
 
     @Id
@@ -34,4 +36,12 @@ public class Restaurante {
     public String getNome(){return nome;}
 
     public void setNome(String nome){this.nome = nome;}
+
+    public List<ItemCardapio> getItensCardapio(){
+        return itensCardapio;
+    }
+
+    public void setItensCardapio(List<ItemCardapio> itensCardapios){
+        this.itensCardapio = itensCardapios;
+    }
 }

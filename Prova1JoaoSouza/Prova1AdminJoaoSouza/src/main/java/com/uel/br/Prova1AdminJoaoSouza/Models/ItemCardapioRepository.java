@@ -7,6 +7,5 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface ItemCardapioRepository extends JpaRepository<ItemCardapio, Integer>{
-    @Query("SELECT i FROM ItemCardapio i WHERE i.restaurante.id = :restauranteId")
-    List<ItemCardapio> findByIdRestaurante(@Param("restauranteId") int restauranteId);
+    List<ItemCardapio> findByRestauranteId( int idRestaurante);
 }
