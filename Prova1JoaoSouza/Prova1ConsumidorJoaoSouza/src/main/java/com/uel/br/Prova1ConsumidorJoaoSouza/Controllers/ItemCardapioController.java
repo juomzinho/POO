@@ -41,37 +41,4 @@ public class ItemCardapioController implements Serializable {
 
         return "cardapio";
     }
-    
-
-    @GetMapping("/pedir/{id}")
-    public String realizarPedido(@PathVariable("id") int id, HttpServletRequest request){
-        ItemCardapio itemCardapio = itemCardapioRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("O id do pedido não foi encontrado: " + id));
-
-
-        List<ItemCardapio> pedidos = (List<ItemCardapio>)request.getSession().getAttribute(SESSION_PEDIDOS);
-
-
-        if (CollectionUtils.isEmpty(pedidos)) {
-            pedidos = new ArrayList<>();
-        }
-
-
-        pedidos.add(itemCardapio);
-        request.getSession().setAttribute(SESSION_PEDIDOS, pedidos);
-
-
-        return "redirect:/pedidos";
-    }
-
-    @GetMapping("/pedidos")
-        public String exibirPedidos(Model model, HttpServletRequest request){
-            List<ItemCardapio> pedidos = (List<ItemCardapio>) request.getSession().getAttribute(SESSION_PEDIDOS);
-
-        model.addAttribute("sessionPedidos", !CollectionUtils.isEmpty(pedidos) ? pedidos : new ArrayList<>());
-
-        return "pedidos";
-    }
-
-
 }
