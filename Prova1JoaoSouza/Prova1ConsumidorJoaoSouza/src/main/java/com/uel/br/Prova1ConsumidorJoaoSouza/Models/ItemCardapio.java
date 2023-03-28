@@ -1,4 +1,4 @@
-package com.uel.br.Prova1AdminJoaoSouza.Models;
+package com.uel.br.Prova1ConsumidorJoaoSouza.Models;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,26 +13,24 @@ import jakarta.validation.constraints.NotNull;
 @Entity
 @Table(name="item_cardapio")
 public class ItemCardapio {
-    
+    @ManyToOne
+    @JoinColumn(name = "id_restaurante", insertable = false, updatable = false)
+    private Restaurante restaurante;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    
     @NotBlank(message = "O nome é obrigatório")
     private String nome;
-    
+
     private String descricao;
-    
-    @ManyToOne
-    @JoinColumn(name = "id_restaurante", insertable = false, updatable = false)
-    private Restaurante restaurante;
+
     @NotNull
     private int id_restaurante;
 
     @NotNull(message = "O preço é obrigatório")
     private double preco;
-
     public int getId() {
         return id;
     }

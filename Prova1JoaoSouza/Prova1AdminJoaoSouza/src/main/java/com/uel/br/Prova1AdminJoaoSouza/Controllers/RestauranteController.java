@@ -1,9 +1,12 @@
 package com.uel.br.Prova1AdminJoaoSouza.Controllers;
 
+import com.uel.br.Prova1AdminJoaoSouza.Models.ItemCardapioRepository;
 import com.uel.br.Prova1AdminJoaoSouza.Models.Restaurante;
+import com.uel.br.Prova1AdminJoaoSouza.Controllers.RestauranteController;
 import com.uel.br.Prova1AdminJoaoSouza.Models.RestauranteRepository;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,9 @@ import org.springframework.validation.BindingResult;
 public class RestauranteController {
     @Autowired
     RestauranteRepository restauranteRepository;
+
+    @Autowired
+    ItemCardapioRepository itemCardapioRepository;
 
     @GetMapping(value={"/index", "/"})
     public String exibir(Model model) {
@@ -49,6 +55,7 @@ public class RestauranteController {
         model.addAttribute("restaurante", restaurante);
         return "atualizar-restaurante";
     }
+    
 
     @PostMapping("/atualizar/{id}")
     public String atualizarRestaurante(@PathVariable("id") int id, @Valid Restaurante restaurante,
@@ -60,14 +67,17 @@ public class RestauranteController {
 
             restauranteRepository.save(restaurante);
             return "redirect:/index";
-        }
+    }
 
+
+        @Transactional
         @GetMapping("/excluir/{id}")
-        public String removerContato(@PathVariable("id") int id, HttpServletRequest request) {
-            Restaurante restaurante = restauranteRepository.findById(id)
-                    .orElseThrow(() -> new IllegalArgumentException("O id do contato é inválido:" + id));
+        public String removerRestaurante(@PathVariable("id") int id, HttpServletRequest request) {
+            restauranteRepository.findById(id)
+                    .orElseThrow(() -> new IllegalArgumentException("O id do restaurante é inválido:" + id));
 
-            restauranteRepository.delete(restaurante);
+
+            restauranteRepository.deleteById(id);
     
             return "redirect:/index";
         }

@@ -6,25 +6,33 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
 </head>
 <body style="display: flex; flex-direction: column; align-items: center; justify-content: center">
-  <h1>Restaurantes</h1>
-  <div th:switch="${restaurantes}">
-      <h2 th:case="null">Não existem restaurantes</h2>
-      <div th:case="*">
-        <table class="table">
+  <h1>Pedidos</h1>
+    <div >
+        <table>
             <thead>
-              <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Cardápio</th>
-              </tr>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th>Pedir</th>
+            </tr>
             </thead>
             <tbody>
-            <tr th:each="restaurante : ${restaurantes}">
-                <td th:text="${restaurante.nome}"></td>
-                <td><a th:href="@{/cardapio/{id}(id=${restaurante.id})}">Cardápio</a></td>
+            <tr th:each="pedido : ${sessionPedidos}">
+                <td th:text="${pedido.nome}"></td>
+                <td th:text="${pedido.descricao}"></td>
+                <td th:text="${pedido.preco}"></td>
+                <td><a th:href="@{/pedir/{id}(id=${pedido.id})}">Remover</a></td>
             </tr>
-              </tbody>
-          </table>
-      </div>
+            </tbody>
+        </table>
+    </div>
+  <div >
+      <button>
+        <a href="/index">
+            Restaurantes
+        </a>
+    </button>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 </body>

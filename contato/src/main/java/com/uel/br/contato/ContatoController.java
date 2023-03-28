@@ -134,7 +134,7 @@ public class ContatoController {
         contatoRepository.delete(contato);
 
 
-        List<Contato> sessionFavoritos =  (List<Contato>) request.getSession().getAttribute(SESSION_FAVORITOS);
+        List<Contato> sessionFavoritos = (List<Contato>) request.getSession().getAttribute(SESSION_FAVORITOS);
 
 
         sessionFavoritos.remove(contato);
