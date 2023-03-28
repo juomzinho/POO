@@ -11,23 +11,27 @@
         <table class="table">
             <thead>
             <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Descrição</th>
-                <th scope="col">Preço</th>
+                <!-- <th scope="col">Nome Restaurante</th> -->
+                <th scope="col">Pedido</th>
                 <th scope="col">Quantidade</th>
+                <th scope="col">Preço</th>
                 <th scope="col">Aumentar</th>
                 <th scope="col">Diminuir</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="pedido : ${sessionPedidos}">
+                <!-- <td th:text="${pedido.nome_restaurante}"></td> -->
                 <td th:text="${pedido.nome}"></td>
-                <td th:text="${pedido.descricao}"></td>
+                <td th:text="${pedido.quantidade}"></td>
                 <td th:text="${pedido.preco}"></td>
-                <td><a th:href="@{/pedir/{id}(id=${pedido.id})}">Remover</a></td>
+                <td><a th:href="@{/aumentar/{id}(id=${pedido.id})}">Aumentar</a></td>
+                <td><a th:href="@{/diminuir/{id}(id=${pedido.id})}">Diminuir</a></td>
             </tr>
             </tbody>
         </table>
+
+        <p>Preço total: <span th:text="${precoTotal}"></span></p>
     </div>
   <div >
       <button>
