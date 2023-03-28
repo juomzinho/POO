@@ -1,5 +1,7 @@
 package com.uel.br.Prova1ConsumidorJoaoSouza.Models;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,7 +14,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name="item_cardapio")
-public class ItemCardapio {
+public class ItemCardapio implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_restaurante", insertable = false, updatable = false)
     private Restaurante restaurante;

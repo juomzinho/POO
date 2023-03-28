@@ -1,5 +1,6 @@
 package com.uel.br.Prova1ConsumidorJoaoSouza.Models;
 
+import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -13,7 +14,7 @@ import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="restaurante")
-public class Restaurante {
+public class Restaurante implements Serializable{
 
     @OneToMany
     @JoinColumn(name = "id_restaurante")
