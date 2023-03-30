@@ -41,11 +41,6 @@ public class ItemCardapioController {
 
         return "cardapio";
     }
-    
-    @Transactional
-    public void deletarTodosItens(int idRestaurante) {
-        itemCardapioRepository.deleteByRestauranteId(idRestaurante);
-    }
 
     @GetMapping("/novo-item/{id}")
     public String formNovoItem(@PathVariable("id") int id,ItemCardapio itemCardapio, Model model){
