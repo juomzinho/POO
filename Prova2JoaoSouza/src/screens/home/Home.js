@@ -7,33 +7,17 @@ const Home = ({ musics, genders, liked, like, removeLiked}) => {
 
     const navigation = useNavigation()
     const getIcon = (music) => {
-        if(liked.includes(music)){
-            return 'heart-sharp'
-        }
-        else{
-            return 'heart-outline'
-        }
+        return liked.includes(music)?'heart-sharp':'heart-outline'
     }
 
     const toggleFavorite = (music) => {
-        if(liked.includes(music)){
-            removeLiked(music)
-        }else{
-            like(music)
-        }
+        return liked.includes(music)?removeLiked(music):like(music)
     }
 
     return( <Body.Container>
         <Body.Title >
             Inicio
         </Body.Title>
-
-        {/* <Body.Button>
-            <MaterialIcons name="my-library-music" size={24} color="white" />
-            <Body.TextBTN>
-                Listar todas as musicas
-            </Body.TextBTN>
-        </Body.Button> */}
 
         <Body.SubTitle>
             Categorias

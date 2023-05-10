@@ -4,20 +4,11 @@ import { FontAwesome5, Ionicons } from "@expo/vector-icons";
 
 const Liked = ({liked, like, removeLiked}) => {
     const getIcon = (music) => {
-        if(liked.includes(music)){
-            return 'heart-sharp'
-        }
-        else{
-            return 'heart-outline'
-        }
+        return liked.includes(music)?'heart-sharp':'heart-outline'
     }
 
     const toggleFavorite = (music) => {
-        if(liked.includes(music)){
-            removeLiked(music)
-        }else{
-            like(music)
-        }
+        return liked.includes(music)?removeLiked(music):like(music)
     }
 
     return( <Body.Container>

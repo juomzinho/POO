@@ -8,20 +8,11 @@ const Category = ({genders, musics, liked, removeLiked, like}) => {
     const navigation = useNavigation()
 
     const getIcon = (music) => {
-        if(liked.includes(music)){
-            return 'heart-sharp'
-        }
-        else{
-            return 'heart-outline'
-        }
+        return liked.includes(music)?'heart-sharp':'heart-outline'
     }
 
     const toggleFavorite = (music) => {
-        if(liked.includes(music)){
-            removeLiked(music)
-        }else{
-            like(music)
-        }
+       return liked.includes(music)?removeLiked(music):like(music)
     }
 
     
