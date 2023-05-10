@@ -20,6 +20,10 @@ export default function App() {
   const [liked, setLiked] = useState([])
 
   const addMusic = (musicData) => {
+    if(music.filter( item => item.nome === musicData.nome && item.artista === musicData.artista).length > 0){
+      alert("Essa musíca já foi adicionada")
+      return
+    }
     let newMusic = [...music]
     newMusic.push(musicData)
     setMusic(newMusic)

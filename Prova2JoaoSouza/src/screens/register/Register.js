@@ -9,7 +9,6 @@ const Register = ({addMusic, genders}) => {
     const [genero, setGenero] = useState('')
 
     const add = () => {
-        console.log("veio")
         if(nome.length === 0 || artista.length === 0 || genero.length === 0){
             alert("Preencha todos os campos")
             return
